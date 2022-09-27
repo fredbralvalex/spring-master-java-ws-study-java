@@ -1,12 +1,14 @@
 package com.fbaa.learnspringframework.game;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SuperContraGame implements GameConsole {
+@Primary
+public class PacManGame implements GameConsole {
 
 	public void up() {
-		System.out.println("up");
+		System.out.println("Pacman up");
 	}
 
 	public void down() {

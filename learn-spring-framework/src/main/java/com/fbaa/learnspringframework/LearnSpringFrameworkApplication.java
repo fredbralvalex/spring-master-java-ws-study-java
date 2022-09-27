@@ -3,10 +3,12 @@ package com.fbaa.learnspringframework;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
-import com.fbaa.learnspringframework.game.GameRunner;
+import com.fbaa.dummy.GameRunner;
 
 @SpringBootApplication
+@ComponentScan({"com.fbaa.learnspringframework", "com.fbaa.dummy"})
 public class LearnSpringFrameworkApplication {
 
 	public static void main(String[] args) {
