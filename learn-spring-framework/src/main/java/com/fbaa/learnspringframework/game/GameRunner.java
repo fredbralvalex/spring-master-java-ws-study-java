@@ -1,9 +1,7 @@
-package com.fbaa.dummy;
+package com.fbaa.learnspringframework.game;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.fbaa.learnspringframework.game.GameConsole;
 
 @Component
 public class GameRunner {
