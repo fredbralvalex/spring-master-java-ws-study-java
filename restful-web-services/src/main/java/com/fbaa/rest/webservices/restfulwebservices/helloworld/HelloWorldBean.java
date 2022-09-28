@@ -22,6 +22,4 @@ public class HelloWorldBean {
 		return "HelloWorldBean [message=" + message + "]";
 	}
 
-	
-
 }
