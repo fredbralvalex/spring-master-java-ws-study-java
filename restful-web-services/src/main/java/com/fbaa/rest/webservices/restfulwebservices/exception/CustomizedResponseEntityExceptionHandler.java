@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.fbaa.rest.webservices.restfulwebservices.user.PostNotFoundException;
 import com.fbaa.rest.webservices.restfulwebservices.user.UserNotFoundException;
 
 @ControllerAdvice
@@ -32,6 +33,13 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDetails);
 	}
 	
+	@ExceptionHandler(PostNotFoundException.class)
+	public final ResponseEntity<ErrorDetails> handlePostNotFoundException(Exception ex, WebRequest request) throws Exception {
+		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
+		
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDetails);
+	}
+	
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(
 			MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
@@ -39,7 +47,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 //		ex.getErrorCount()
 //		ex.getFieldErrors()
 
-		String message = "Total Erros: " + ex.getErrorCount() + " First error: " + ex.getFieldError().getDefaultMessage(); 
+		String message = "Total Errors: " + ex.getErrorCount() + " First error: " + ex.getFieldError().getDefaultMessage(); 
 				
 		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), message, request.getDescription(false));
 		
