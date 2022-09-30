@@ -1,9 +1,19 @@
 package com.fbaa.springboot.learnjpahibernate.course;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+//name="course"
+@Entity
 public class Course {
 	
+	@Id
 	private long id;
+	
+//	@Column(name="name") it doesnt need because it has the same name
 	private String name;
+	
+//	@Column(name="author") it doesnt need because it has the same name
 	private String author;
 	
 	public Course() {
